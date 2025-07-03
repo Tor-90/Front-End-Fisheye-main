@@ -3,7 +3,7 @@ const idUrl = url.get('id')
 console.log("ID de l'url :", idUrl)
 
 async function getMedia() {
-    let response = await fetch("/data/photographers.json")
+    let response = await fetch("./data/photographers.json")
     let data = await response.json()
     return data
 }
