@@ -5,7 +5,7 @@ function photographerTemplate(data) {
 
     function getUserCardDOM() {
         const a = document.createElement('a');
-        a.setAttribute("href", "/photographer.html?id=" + id);
+        a.setAttribute("href", "./photographer.html?id=" + id);
         const article = document.createElement('article');
         const img = document.createElement('img');
         img.setAttribute("src", picture);
