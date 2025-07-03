@@ -1,5 +1,5 @@
     async function getPhotographers() {
-        let response = await fetch("data/photographers.json")
+        let response = await fetch("./data/photographers.json")
         let photographers = await response.json()
         console.log(photographers)
         return photographers
