@@ -190,9 +190,7 @@ select {
     background-color: white;
     max-width: 90%;
     max-height: 90%;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .media-content img,
@@ -201,15 +199,39 @@ select {
     max-height: 80vh;
     object-fit: contain;
     border-radius: 4px;
-
+    display: block;
 }
 
 .media-title {
     margin-top: 12px;
     font-size: 20px;
     font-weight: 500;
+    color: #901C1C;
 }
 
-.close-icon {
-    position: absolute;
+.previous, .next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 84%;
+    height: 100%;
+    cursor: pointer;
+    margin: 30px;
+    font-size: 48px;
+    color: #901C1C;
 }
+
+.media-cross {
+    position: relative;
+    display: inline-block;
+}
+
+.cross {
+    position: absolute;
+    top: 0px;
+    right: -50px;
+    color: #901C1C;
+    cursor: pointer;
+    font-size: 42px;
+}
+
