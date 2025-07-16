@@ -31,6 +31,7 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 200px;
 }
 
 .modal {
@@ -128,6 +129,11 @@ select {
     padding-right: 30px;
 }
 
+.list {
+    margin-top: 10px;
+    margin-left: 7%;
+}
+
 #media-section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -145,6 +151,7 @@ select {
     height: 300px;
     border-radius: 5px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .media-info {
@@ -158,17 +165,33 @@ select {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 5px;
+}
+
+.media-info {
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
 }
 
 .rectangle-fixe {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     position: fixed;
     bottom: 0px;
     right: 50px;
-    background-color: #D3573C;
+    background-color: #DB8876;
     width: 376px;
-    height: 89px;
+    height: 70px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+}
+
+.rectangle-fixe p {
+    font-size: 25px;
+    font-weight: 500;
 }
 
 .hidden {

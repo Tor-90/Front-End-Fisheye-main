@@ -28,8 +28,8 @@ async function displayData(photographers) {
     const headerName = document.getElementById("headerName")
     headerName.innerHTML += `<br><span>${photographers.name}</span>`
     
-    const rectangle = document.querySelector(".rectangle-fixe")
-    rectangle.innerHTML += `${photographers.price}€/jour`
+    const rectanglePrice = document.querySelector(".price")
+    rectanglePrice.innerHTML += `${photographers.price}€/jour`
 }
 
 async function init() {
