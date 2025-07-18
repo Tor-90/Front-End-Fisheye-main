@@ -1,6 +1,5 @@
 const url = new URLSearchParams(window.location.search);
 const idUrl = url.get('id')
-console.log("ID de l'url :", idUrl)
 
 async function getMedia() {
     let response = await fetch("./data/photographers.json")
@@ -36,7 +35,6 @@ async function init() {
     const data = await getMedia()
     const photographers = getPhotographerById(data.photographers)
     const filterMedia = await getMediasById(data.media)
-    console.log(photographers, filterMedia)
     await displayData(photographers, filterMedia)
     filterMedia.forEach((media) => {
         mediaTemplate(media, photographers.name)

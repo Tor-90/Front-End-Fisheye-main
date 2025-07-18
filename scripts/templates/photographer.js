@@ -175,10 +175,10 @@ function closeMediaModal() {
 }
 
 function previousMedia() {
-    let actualId = document.querySelector("#actualMedia")
-    let actualSrc = actualId.getAttribute("src")
+    let modalContent = document.querySelector(".media-content")
+    let actualSrc = modalContent.firstChild.getAttribute("src")
     let allMedia = document.querySelectorAll(".media-card img, .media-card video")
-    let mediaTitle = document.querySelector(".media-title")
+    let allTitle = document.querySelectorAll(".media-titre")
 
     for (let i = 0; i < allMedia.length; i++) {
         let actualMedia = allMedia[i]
@@ -186,18 +186,19 @@ function previousMedia() {
 
         if (actualSrc === actualMediaSrc) {
             let index = i === 0 ? allMedia.length - 1 : i - 1
-            actualId.src = allMedia[index].getAttribute("src")
+            document.querySelector(".media-title").textContent = allTitle[index].textContent
+            modalContent.textContent = ""
+            modalContent.appendChild(allMedia[index].cloneNode())
+            modalContent.firstChild.setAttribute("controls", true)
         }
-
     }
-
 }
 
 function nextMedia() {
-    let actualId = document.querySelector("#actualMedia")
-    let actualSrc = actualId.getAttribute("src")
+    let modalContent = document.querySelector(".media-content")
+    let actualSrc = modalContent.firstChild.getAttribute("src")
     let allMedia = document.querySelectorAll(".media-card img, .media-card video")
-    let mediaTitle = document.querySelector(".media-title")
+    let allTitle = document.querySelectorAll(".media-titre")
 
     for (let i = 0; i < allMedia.length; i++) {
         let actualMedia = allMedia[i]
@@ -205,8 +206,10 @@ function nextMedia() {
 
         if (actualSrc === actualMediaSrc) {
             let index = allMedia.length == i + 1 ? 0 : i + 1
-            actualId.src = allMedia[index].getAttribute("src")
+            document.querySelector(".media-title").textContent = allTitle[index].textContent
+            modalContent.textContent = ""
+            modalContent.appendChild(allMedia[index].cloneNode())
+            modalContent.firstChild.setAttribute("controls", true)
         }
-
     }
 }
