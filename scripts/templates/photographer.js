@@ -104,6 +104,7 @@ function mediaTemplate(media, photographerName) {
 
     const likes = document.createElement("p")
     likes.classList.add("count-likes")
+    likes.dataset.likes = media.likes
     likes.textContent = media.likes
 
     const iconeLike = document.createElement("i")
@@ -112,11 +113,13 @@ function mediaTemplate(media, photographerName) {
     iconeLike.addEventListener("click", () => {
         if (iconeLike.classList.contains("fa-solid")) {
             media.likes -= 1
+            likes.dataset.likes -= 1
             likes.textContent = media.likes
             iconeLike.classList.remove("fa-solid", "liked")
             iconeLike.classList.add("fa-regular")
         } else {
             media.likes += 1
+            likes.dataset.likes = parseInt(likes.dataset.likes) + 1
             likes.textContent = media.likes
             iconeLike.classList.remove("fa-regular")
             iconeLike.classList.add("fa-solid", "liked")
@@ -213,3 +216,42 @@ function nextMedia() {
         }
     }
 }
+
+document.addEventListener("keydown", (e) => {
+    const mediaModal = document.getElementById("media-modal")
+    const mediaModalOpen = !mediaModal.classList.contains("hidden")
+
+    if (!mediaModalOpen) return
+    if (e.key === "ArrowRight") {
+        nextMedia()
+    }
+
+    else if (e.key === "ArrowLeft") {
+        previousMedia()
+    }
+
+    else if (e.key === "Escape") {
+        closeMediaModal()
+    }
+})
+
+const selectOption = document.getElementById("sort")
+const media = document.querySelectorAll("media-card")
+
+selectOption.addEventListener('change', () => {
+    const selectedValue = selectOption.value
+
+    if (selectedValue === "popularite") {
+        const imageVideo = Array.from(document.querySelectorAll(".media-card img, .media-card video"))
+        console.log(imageVideo)
+    }
+
+    if (selectedValue === "date") {
+
+    }
+
+    if (selectedValue === "titre") {
+
+    }
+
+})
