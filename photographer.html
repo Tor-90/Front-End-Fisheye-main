@@ -15,42 +15,42 @@
   <div id="media-modal" class="hidden">
 
     <div class="previous">
-      <i class="fa-solid fa-chevron-left" onclick="previousMedia()"></i>
+      <i class="fa-solid fa-chevron-left" aria-label="Media précedent" onclick="previousMedia()"></i>
     </div>
 
     <div class="modal-content">
       <div class="media-cross">
         <div class="media-content"></div>
         <div class="cross">
-          <i class="fa-solid fa-xmark" onclick="closeMediaModal()"></i>
+          <i class="fa-solid fa-xmark" aria-label="Fermer modal" onclick="closeMediaModal()"></i>
         </div>
       </div>
       <div class="media-title"></div>
     </div>
 
     <div class="next">
-      <i class="fa-solid fa-chevron-right" onclick="nextMedia()"></i>
+      <i class="fa-solid fa-chevron-right" aria-label="Prochain media" onclick="nextMedia()"></i>
     </div>
 
   </div>
 
   <header>
     <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" alt="Retour à l'accueil" class="logo" />
     </a>
   </header>
   <main id="main">
     <div class="photograph-header">
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <button class="contact_button" aria-label="Formulaire de contact" onclick="displayModal()">Contactez-moi</button>
     </div>
     <div class="container-list-media">
       <div class="list">
         <label for="sort">Trier par</label>
 
         <select id="sort">
-          <option value="popularite">Popularité</option>
-          <option value="date">Date</option>
-          <option value="titre">Titre</option>
+          <option value="popularite" aria-label="Popularité">Popularité</option>
+          <option value="date" aria-label="Date">Date</option>
+          <option value="titre" aria-label="Titre">Titre</option>
         </select>
 
       </div>
@@ -61,7 +61,7 @@
     <div class="modal">
       <header>
         <h2 id="headerName">Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" aria-label="Fermer" onclick="closeModal()" />
       </header>
       <form id="contact_form">
         <div>
@@ -78,7 +78,7 @@
           <input type="text" id="message" name="message" /><br>
           <div class="error" id="errorMessage"></div>
         </div>
-        <button class="contact_button">Envoyer</button>
+        <button class="contact_button" aria-label="Envoie du formulaire">Envoyer</button>
       </form>
     </div>
   </div>

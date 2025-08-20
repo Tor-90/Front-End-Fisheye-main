@@ -9,6 +9,7 @@ function photographerTemplate(data) {
         const article = document.createElement('article')
         const img = document.createElement('img')
         img.setAttribute("src", picture)
+        img.setAttribute('aria-label', `${name}, ${country}, ${city}, ${price}€/jour`)
         const h2 = document.createElement('h2')
         h2.textContent = name
         const pCity = document.createElement('p')
@@ -54,6 +55,7 @@ function photographerHeaderTemplate(data) {
         photoDiv.classList.add('photoPhotographer')
         const img = document.createElement('img')
         img.setAttribute('src', picture)
+        img.setAttribute('aria-label', 'Portrait du photographe')
         photoDiv.appendChild(img)
         return { textDiv, photoDiv }
     }
@@ -64,6 +66,7 @@ function photographerHeaderTemplate(data) {
 function mediaTemplate(media, photographerName) {
     const article = document.createElement("article")
     article.classList.add("media-card")
+    article.setAttribute('tabindex', '0')
     const photographerFirstName = photographerName.split(" ")[0]
 
     let mediaElement
@@ -72,25 +75,36 @@ function mediaTemplate(media, photographerName) {
         mediaElement = document.createElement("img")
         mediaSrc = `assets/images/${photographerFirstName}/${media.image}`
         mediaElement.setAttribute("src", mediaSrc)
+        mediaElement.setAttribute("aria-label", media.title)
     }
 
     else if (media.video) {
         mediaElement = document.createElement("video");
         mediaSrc = `assets/images/${photographerFirstName}/${media.video}`
         mediaElement.setAttribute("src", mediaSrc)
+        mediaElement.setAttribute("aria-label", media.title)
     }
 
-    mediaElement.addEventListener("click", () => {
+    mediaElement.addEventListener("click", typeOfMedia)
+    article.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            mediaElement.click()
+        }
+    })
+
+    function typeOfMedia() {
         let mediaType;
         if (media.image) {
             mediaType = "image"
-        } else {
+        }
+        else {
             mediaType = "video"
         }
 
-        openMediaModal(mediaSrc, mediaType, media.title);
-    });
+        openMediaModal(mediaSrc, mediaType, media.title)
+    }
 
+    mediaElement.setAttribute('aria-label', `${media.title} de ${photographerName}`)
     const mediaInfo = document.createElement("div")
     mediaInfo.classList.add("media-info")
 
@@ -109,8 +123,17 @@ function mediaTemplate(media, photographerName) {
 
     const iconeLike = document.createElement("i")
     iconeLike.classList.add("fa-regular", "fa-heart")
+    iconeLike.setAttribute('tabindex', '0')
+    iconeLike.setAttribute('aria-label', 'Bouton like')
 
-    iconeLike.addEventListener("click", () => {
+    iconeLike.addEventListener("click", Like);
+    iconeLike.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            Like()
+        }
+    })
+
+    function Like() {
         if (iconeLike.classList.contains("fa-solid")) {
             media.likes -= 1
             likes.dataset.likes -= 1
@@ -124,9 +147,9 @@ function mediaTemplate(media, photographerName) {
             iconeLike.classList.remove("fa-regular")
             iconeLike.classList.add("fa-solid", "liked")
         }
-
         totalLikes();
-    });
+    }
+
 
     likeContainer.appendChild(likes)
     likeContainer.appendChild(iconeLike)
@@ -167,6 +190,9 @@ function openMediaModal(mediaSrc, type, title) {
     mediaElement.setAttribute("src", mediaSrc)
     mediaElement.id = "actualMedia"
 
+    let photographerName = document.querySelector("h1").textContent
+    mediaElement.setAttribute("aria-label", `${title} de ${photographerName}`)
+
     mediaTitle.textContent = title
 
     mediaContent.appendChild(mediaElement)
@@ -193,6 +219,8 @@ function previousMedia() {
             modalContent.textContent = ""
             modalContent.appendChild(allMedia[index].cloneNode())
             modalContent.firstChild.setAttribute("controls", true)
+            let photographerName = document.querySelector("h1").textContent
+            newMedia.setAttribute("aria-label", `${allTitle[index].textContent} de ${photographerName}`)
         }
     }
 }
@@ -213,6 +241,8 @@ function nextMedia() {
             modalContent.textContent = ""
             modalContent.appendChild(allMedia[index].cloneNode())
             modalContent.firstChild.setAttribute("controls", true)
+            let photographerName = document.querySelector("h1").textContent
+            newMedia.setAttribute("aria-label", `${allTitle[index].textContent} de ${photographerName}`)
         }
     }
 }
@@ -236,22 +266,20 @@ document.addEventListener("keydown", (e) => {
 })
 
 const selectOption = document.getElementById("sort")
-const media = document.querySelectorAll("media-card")
 
 selectOption.addEventListener('change', () => {
     const selectedValue = selectOption.value
 
     if (selectedValue === "popularite") {
-        const imageVideo = Array.from(document.querySelectorAll(".media-card img, .media-card video"))
-        console.log(imageVideo)
+        init("likes")
     }
 
     if (selectedValue === "date") {
-
+        init("date")
     }
 
     if (selectedValue === "titre") {
-
+        init("title")
     }
 
 })

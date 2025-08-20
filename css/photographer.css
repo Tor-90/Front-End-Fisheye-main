@@ -1,12 +1,14 @@
 #contact_modal {
     display: none;
-    position: absolute;
+    position: fixed;
     justify-content: center;
     align-items: center;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    z-index: 2;
+    background-color: white;
 }
 
 .photograph-header {
@@ -31,7 +33,14 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 200px;
+}
+
+.infoPhotographer {
+    padding-left: 100px;
+}
+
+.contact_button {
+    margin-left: -210px;
 }
 
 .modal {
@@ -88,10 +97,6 @@ form input {
     border-radius: 5px;
 }
 
-.infoPhotographer {
-    margin-left: 100px;
-}
-
 .photograph-header img {
     border-radius: 50%;
     width: 150px;
@@ -129,8 +134,12 @@ select {
     padding-right: 30px;
 }
 
+.container-list-media {
+    padding-top: 50px;
+}
+
 .list {
-    margin-top: 10px;
+    margin-bottom: 50px;
     margin-left: 7%;
 }
 
@@ -187,6 +196,7 @@ select {
     height: 70px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    z-index: 0;
 }
 
 .rectangle-fixe p {

@@ -26,18 +26,28 @@ async function displayData(photographers) {
 
     const headerName = document.getElementById("headerName")
     headerName.innerHTML += `<br><span>${photographers.name}</span>`
-    
+
     const rectanglePrice = document.querySelector(".price")
     rectanglePrice.innerHTML += `${photographers.price}€/jour`
 }
 
-async function init() {
+async function init(triSort = false) {
     const data = await getMedia()
-    const photographers = getPhotographerById(data.photographers)
+    const photographer = getPhotographerById(data.photographers)
     const filterMedia = await getMediasById(data.media)
-    await displayData(photographers, filterMedia)
+
+    if (triSort) {
+        filterMedia.sort((a, b) => {
+            return a[triSort] > b[triSort] ? 1:-1
+        })
+        document.getElementById("media-section").textContent = ""
+    }
+    else {
+        await displayData(photographer, filterMedia)
+    }
+
     filterMedia.forEach((media) => {
-        mediaTemplate(media, photographers.name)
+        mediaTemplate(media, photographer.name)
     })
     totalLikes()
 }
