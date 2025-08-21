@@ -219,8 +219,6 @@ function previousMedia() {
             modalContent.textContent = ""
             modalContent.appendChild(allMedia[index].cloneNode())
             modalContent.firstChild.setAttribute("controls", true)
-            let photographerName = document.querySelector("h1").textContent
-            newMedia.setAttribute("aria-label", `${allTitle[index].textContent} de ${photographerName}`)
         }
     }
 }
@@ -241,8 +239,6 @@ function nextMedia() {
             modalContent.textContent = ""
             modalContent.appendChild(allMedia[index].cloneNode())
             modalContent.firstChild.setAttribute("controls", true)
-            let photographerName = document.querySelector("h1").textContent
-            newMedia.setAttribute("aria-label", `${allTitle[index].textContent} de ${photographerName}`)
         }
     }
 }
