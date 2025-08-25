@@ -58,6 +58,7 @@ function verifFormulaire() {
         errorMessage.innerText = ''
     };
 
+    return valide
 }
 
 
@@ -65,7 +66,10 @@ const modal = document.getElementById("contact_modal");
 modal.addEventListener("submit", (event) => {
     event.preventDefault()
     if (verifFormulaire()) {
-        console.log("Validé.")
+        console.log("Prénom :", firstName.value)
+        console.log("Nom :", lastName.value)
+        console.log("Email :", email.value)
+        console.log("Message :", message.value)
         modal.style.display = "none"
     }
     else {

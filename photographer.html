@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -15,21 +15,21 @@
   <div id="media-modal" class="hidden">
 
     <div class="previous">
-      <i class="fa-solid fa-chevron-left" aria-label="Media précedent" onclick="previousMedia()"></i>
+      <span class="fa-solid fa-chevron-left" aria-label="Media précedent" onclick="previousMedia()"></i>
     </div>
 
     <div class="modal-content">
       <div class="media-cross">
         <div class="media-content"></div>
         <div class="cross">
-          <i class="fa-solid fa-xmark" aria-label="Fermer modal" onclick="closeMediaModal()"></i>
+          <span class="fa-solid fa-xmark" aria-label="Fermer modal" onclick="closeMediaModal()"></i>
         </div>
       </div>
       <div class="media-title"></div>
     </div>
 
     <div class="next">
-      <i class="fa-solid fa-chevron-right" aria-label="Prochain media" onclick="nextMedia()"></i>
+      <span class="fa-solid fa-chevron-right" aria-label="Prochain media" onclick="nextMedia()"></i>
     </div>
 
   </div>
@@ -61,20 +61,20 @@
     <div class="modal">
       <header>
         <h2 id="headerName">Contactez-moi</h2>
-        <img src="assets/icons/close.svg" aria-label="Fermer" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" alt="" aria-label="Fermer" onclick="closeModal()" />
       </header>
       <form id="contact_form">
         <div>
-          <label id="namefirst">Prénom</label>
+          <label for="first" id="namefirst">Prénom</label>
           <input type="text" id="first" name="first" /><br>
           <div class="error" id="errorFirst"></div>
-          <label>Nom</label>
+          <label for="last">Nom</label>
           <input type="text" id="last" name="last" /><br>
           <div class="error" id="errorLast"></div>
-          <label>Email</label>
+          <label for="email">Email</label>
           <input type="email" id="email" name="email" /><br>
           <div class="error" id="errorEmail"></div>
-          <label>Votre message</label>
+          <label for="message">Votre message</label>
           <input type="text" id="message" name="message" /><br>
           <div class="error" id="errorMessage"></div>
         </div>

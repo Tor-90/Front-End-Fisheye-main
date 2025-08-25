@@ -34,11 +34,17 @@ async function displayData(photographers) {
 async function init(triSort = false) {
     const data = await getMedia()
     const photographer = getPhotographerById(data.photographers)
+
+    if (!photographer) {
+        document.querySelector("main").innerHTML = '<h2 class="error-id">Cet ID n\'existe pas ou plus</h2>'
+        return
+    }
+
     const filterMedia = await getMediasById(data.media)
 
     if (triSort) {
         filterMedia.sort((a, b) => {
-            return a[triSort] > b[triSort] ? 1:-1
+            return a[triSort] > b[triSort] ? 1 : -1
         })
         document.getElementById("media-section").textContent = ""
     }
