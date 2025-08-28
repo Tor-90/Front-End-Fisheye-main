@@ -9,7 +9,7 @@ function photographerTemplate(data) {
         const article = document.createElement('article')
         const img = document.createElement('img')
         img.setAttribute("src", picture)
-        img.setAttribute('aria-label', `${name}, ${country}, ${city}, ${price}€/jour`)
+        img.setAttribute('alt', `${name}, ${country}, ${city}, ${price}€/jour`)
         const h2 = document.createElement('h2')
         h2.textContent = name
         const pCity = document.createElement('p')
@@ -55,7 +55,7 @@ function photographerHeaderTemplate(data) {
         photoDiv.classList.add('photoPhotographer')
         const img = document.createElement('img')
         img.setAttribute('src', picture)
-        img.setAttribute('aria-label', 'Portrait du photographe')
+        img.setAttribute('alt', 'Portrait du photographe')
         photoDiv.appendChild(img)
         return { textDiv, photoDiv }
     }
@@ -75,14 +75,14 @@ function mediaTemplate(media, photographerName) {
         mediaElement = document.createElement("img")
         mediaSrc = `assets/images/${photographerFirstName}/${media.image}`
         mediaElement.setAttribute("src", mediaSrc)
-        mediaElement.setAttribute("aria-label", media.title)
+        mediaElement.setAttribute("alt", media.title)
     }
 
     else if (media.video) {
         mediaElement = document.createElement("video");
         mediaSrc = `assets/images/${photographerFirstName}/${media.video}`
         mediaElement.setAttribute("src", mediaSrc)
-        mediaElement.setAttribute("aria-label", media.title)
+        mediaElement.setAttribute("title", media.title)
     }
 
     mediaElement.addEventListener("click", typeOfMedia)
@@ -104,7 +104,7 @@ function mediaTemplate(media, photographerName) {
         openMediaModal(mediaSrc, mediaType, media.title)
     }
 
-    mediaElement.setAttribute('aria-label', `${media.title} de ${photographerName}`)
+    mediaElement.setAttribute('alt', `${media.title} de ${photographerName}`)
     const mediaInfo = document.createElement("div")
     mediaInfo.classList.add("media-info")
 
@@ -191,7 +191,7 @@ function openMediaModal(mediaSrc, type, title) {
     mediaElement.id = "actualMedia"
 
     let photographerName = document.querySelector("h1").textContent
-    mediaElement.setAttribute("aria-label", `${title} de ${photographerName}`)
+    mediaElement.setAttribute("alt", `${title} de ${photographerName}`)
 
     mediaTitle.textContent = title
 
